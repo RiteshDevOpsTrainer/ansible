@@ -1,3 +1,2 @@
-Host sampletechno
-  Hostname 192.168.1.107
-  StrictHostKeyChecking no
+[appserver]
+192.168.1.107
