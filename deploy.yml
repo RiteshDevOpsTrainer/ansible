@@ -1,0 +1,21 @@
+---
+- hosts: appserver
+  become: yes
+  tasks:
+
+  - name: Copy the war file ROOT.war as Shopizer.war.tmp to /usr/local/tomcat/webapps/
+    copy:
+      src: /var/lib/jenkins/workspace/ShoppingPortal/sm-shop/target/ROOT.war
+      dest: /usr/local/tomcat/webapps/shopizer.war.tmp
+      force: yes
+
+  - name: Remove current war file /usr/local/tomcat/webapps/shopizer.war
+    file: path=/usr/local/tomcat/webapps/shopizer.war state=absent
+
+  - name: Wait until the webapp folder /usr/local/tomcat/webapps/shopizer is deleted
+    wait_for:
+      path: /usr/local/tomcat/webapps/shopizer
+      state: absent
+
+  - name: rename the /usr/local/tomcat/webapps/shopizer.war.tmp to /usr/local/tomcat/webapps/shopizer.war
+    command: "mv /usr/local/tomcat/webapps/shopizer.war.tmp /usr/local/tomcat/webapps/shopizer.war"
