@@ -1,6 +1,5 @@
 ---
 - hosts: appserver
-  become: true
   tasks:
 
   - name: Copy the war file ROOT.war as Shopizer.war.tmp to /usr/local/tomcat/webapps/
