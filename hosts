@@ -1,2 +1,6 @@
 [appserver]
 192.168.43.137
+
+[appserver:vars]
+ansible_ssh_user=root
+ansible_ssh_private_key_file=/root/.ssh/id_rsa.pub
