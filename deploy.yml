@@ -3,19 +3,19 @@
   sudo: yes
   tasks:
 
-  - name: Copy the war file ROOT.war as Shopizer.war.tmp to /usr/local/tomcat/webapps/
+  - name: Copy the war file ROOT.war as Webstore.war.tmp to /usr/local/tomcat/webapps/
     copy:
-      src: /var/lib/jenkins/workspace/ShoppingPortal/sm-shop/target/ROOT.war
-      dest: /usr/local/tomcat/webapps/shopizer.war.tmp
+      src: /var/lib/jenkins/workspace/ProjectDemo/sm-shop/target/ROOT.war
+      dest: /usr/local/tomcat/webapps/Webstore.war.tmp
       force: yes
 
-  - name: Remove current war file /usr/local/tomcat/webapps/shopizer.war
-    file: path=/usr/local/tomcat/webapps/shopizer.war state=absent
+  - name: Remove current war file /usr/local/tomcat/webapps/Webstore.war
+    file: path=/usr/local/tomcat/webapps/Webstore.war state=absent
 
-  - name: Wait until the webapp folder /usr/local/tomcat/webapps/shopizer is deleted
+  - name: Wait until the webapp folder /usr/local/tomcat/webapps/Webstore is deleted
     wait_for:
-      path: /usr/local/tomcat/webapps/shopizer
+      path: /usr/local/tomcat/webapps/Webstore
       state: absent
 
-  - name: rename the /usr/local/tomcat/webapps/shopizer.war.tmp to /usr/local/tomcat/webapps/shopizer.war
-    command: "mv /usr/local/tomcat/webapps/shopizer.war.tmp /usr/local/tomcat/webapps/shopizer.war"
+  - name: rename the /usr/local/tomcat/webapps/Webstore.war.tmp to /usr/local/tomcat/webapps/Webstore.war
+    command: "mv /usr/local/tomcat/webapps/Webstore.war.tmp /usr/local/tomcat/webapps/Webstore.war"
