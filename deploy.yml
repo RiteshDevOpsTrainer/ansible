@@ -5,7 +5,7 @@
 
   - name: Copy the war file ROOT.war as Webstore.war.tmp to /usr/local/tomcat/webapps/
     copy:
-      src: /var/lib/jenkins/workspace/ProjectDemo/target/*.war
+      src: /var/lib/jenkins/workspace/ProjectDemo/target/WebStore-1.0-SNAPSHOT.war
       dest: /usr/local/tomcat/webapps/Webstore.war.20191207
       force: yes
 
@@ -18,4 +18,4 @@
       state: absent
 
   - name: rename the /usr/local/tomcat/webapps/Webstore.war.tmp to /usr/local/tomcat/webapps/Webstore.war
-    command: "mv /usr/local/tomcat/webapps/Webstore.war.tmp /usr/local/tomcat/webapps/Webstore.war"
+    command: "mv /usr/local/tomcat/webapps/Webstore.war.20191207 /usr/local/tomcat/webapps/Webstore.war"
