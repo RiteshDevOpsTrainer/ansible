@@ -1,6 +1,6 @@
 ---
 - hosts: appserver
-  sudo: yes
+  become : true
   tasks:
 
   - name: Copy the war file ROOT.war as Webstore.war.tmp to /usr/local/tomcat/webapps/
