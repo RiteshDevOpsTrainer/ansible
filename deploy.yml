@@ -3,19 +3,16 @@
   become : true
   tasks:
 
-  - name: Copy the war file ROOT.war as Webstore.war.tmp to /usr/local/tomcat/webapps/
-    copy:
-      src: /var/lib/jenkins/workspace/Project-DevOps/target/WebStore-1.0-SNAPSHOT.war
-      dest: /usr/local/tomcat/webapps/Webstore.war.20191207
-      force: yes
+  - name: Remove current war file /usr/local/tomcat/webapps/devops.war
+    file: path=/usr/local/tomcat/webapps/devops.war state=absent
 
-  - name: Remove current war file /usr/local/tomcat/webapps/Webstore.war
-    file: path=/usr/local/tomcat/webapps/Webstore.war state=absent
-
-  - name: Wait until the webapp folder /usr/local/tomcat/webapps/Webstore is deleted
+  - name: Wait until the webapp folder /usr/local/tomcat/webapps/devops is deleted
     wait_for:
-      path: /usr/local/tomcat/webapps/Webstore
+      path: /usr/local/tomcat/webapps/devops
       state: absent
 
-  - name: rename the /usr/local/tomcat/webapps/Webstore.war.tmp to /usr/local/tomcat/webapps/Webstore.war
-    command: "mv /usr/local/tomcat/webapps/Webstore.war.20191207 /usr/local/tomcat/webapps/Webstore.war"
+  - name: Copy the war file ROOT.war as devops.war.tmp to /usr/local/tomcat/webapps/
+    copy:
+      src: /var/lib/jenkins/workspace/Project-DevOps/target/devops-1.war
+      dest: /usr/local/tomcat/webapps/devops.war
+      force: yes
