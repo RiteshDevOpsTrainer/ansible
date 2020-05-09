@@ -13,11 +13,11 @@
 
   - name: Copy the war file ROOT.war as devops.war.tmp to /usr/local/tomcat/webapps/
     copy:
-      src: /var/lib/jenkins/workspace/Project-DevOps/target/devops-1.war
+      src: ../target/devops-1.war
       dest: /usr/local/tomcat/webapps/devops.war
       force: yes
 
   - name: Add the firewall rules for tomcat port 9080
-	  shell: |
-	    firewall-cmd --zone=public --add-port=9080/tcp
-	    firewall-cmd --zone=public --add-port=9080/tcp --permanent
+    shell: |
+      firewall-cmd --zone=public --add-port=9080/tcp
+      firewall-cmd --zone=public --add-port=9080/tcp --permanent
