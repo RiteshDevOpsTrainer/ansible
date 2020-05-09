@@ -13,7 +13,7 @@
 
   - name: Copy the war file ROOT.war as devops.war.tmp to /usr/local/tomcat/webapps/
     copy:
-      src: ../target/devops-1.war
+      src: target/devops-1.war
       dest: /usr/local/tomcat/webapps/devops.war
       force: yes
 
